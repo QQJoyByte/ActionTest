@@ -1,0 +1,35 @@
+name: Build and Upload to Cloud
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # 使用 GitHub 的免费 Linux 机器打包，速度最快
+
+    steps:
+      # 1. 下载代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 激活 Unity (免费版必须步骤)
+      - name: Activate Unity
+        uses: game-ci/unity-activate@v3
+        with:
+          unityVersion: 2022.3.62f3c1 # 请改成你实际的版本号
+          email: ${{secrets.UNITY_EMAIL}}
+          password: ${{ secrets.UNITY_PASSWORD }}
+          activationMethod: manual # 免费版必须设为 manual
+
+      # 3. 打包 Windows 版本
+      - name: Build Project
+        uses: game-ci/unity-builder@v4
+        with:
+          targetPlatform: StandaloneWindows64
+          buildName: MyGame
+          buildPath: build
+
+      # 4. 压缩文件
+      - name: Zip Build
+        run: zip -r game_release.zip build/*
