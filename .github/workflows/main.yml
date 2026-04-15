@@ -15,7 +15,7 @@ jobs:
 
       # 2. 激活 Unity (免费版必须步骤)
       - name: Activate Unity
-        uses: game-ci/unity-activate@v2
+        uses: game-ci/unity-activate@v3
         with:
           unityVersion: 2022.3.62f3c1 # 请改成你实际的版本号
           email: ${{secrets.UNITY_EMAIL}}
