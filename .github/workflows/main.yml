@@ -17,7 +17,7 @@ jobs:
       - name: Activate Unity
         uses: game-ci/unity-activate@v2.0.0
         with:
-          unityVersion: windows-2022.1.12f1-android-3.2.2 # 请改成你实际的版本号
+          unityVersion: 2022.1.12f1 # 请改成你实际的版本号
           email: ${{secrets.UNITY_EMAIL}}
           password: ${{ secrets.UNITY_PASSWORD }}
           activationMethod: manual # 免费版必须设为 manual
