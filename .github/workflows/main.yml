@@ -16,11 +16,14 @@ jobs:
       # 2. 激活 Unity (免费版必须步骤)
       - name: Activate Unity
         uses: game-ci/unity-activate@v2.0.0
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          unityVersion: 2022.1.12f1 # 请改成你实际的版本号
-          email: ${{secrets.UNITY_EMAIL}}
-          password: ${{ secrets.UNITY_PASSWORD }}
-          activationMethod: manual # 免费版必须设为 manual
+          unityVersion: 2022.1.12f1 # 请改成你实际的版本
+          # 强制使用命令行激活模式
+          UNITY_CLI_LOGIN: 1
+          #activationMethod: manual # 免费版必须设为 manual
 
       # 3. 打包 Windows 版本
       - name: Build Project
