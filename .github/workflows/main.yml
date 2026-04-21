@@ -15,7 +15,7 @@ jobs:
 
       # 2. 激活 Unity (免费版必须步骤)
       - name: Activate Unity
-        uses: game-ci/unity-activate@v4
+        uses: game-ci/unity-activate@v3
         env:
           # v3 版本通过 env 传递参数，而不是 with
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
