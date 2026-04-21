@@ -22,7 +22,7 @@ jobs:
         with:
           unityVersion: 2022.1.12f1 # 请改成你实际的版本
           # 强制使用命令行激活模式
-          UNITY_CLI_LOGIN: 1
+          #UNITY_CLI_LOGIN: 1
           #activationMethod: manual # 免费版必须设为 manual
 
       # 3. 打包 Windows 版本
